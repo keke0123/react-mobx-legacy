@@ -1,10 +1,10 @@
 import React from 'react';
-import {observer, inject} from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 
 // @inject('counter')
 @inject(store => {
     console.log('store', store);
-    return {}
+    return {};
 })
 @observer
 class Test1 extends React.Component {
@@ -13,11 +13,7 @@ class Test1 extends React.Component {
         console.log('this', this);
     }
     render() {
-        return (
-            <div>
-                Test1 page
-            </div>
-        );
+        return <div>Test1 page</div>;
     }
 }
 

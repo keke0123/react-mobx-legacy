@@ -1,25 +1,29 @@
 import React from 'react';
 import './App.css';
 import TopLayout from './layouts';
+// mobx-router
+import { RouterStore, MobxRouter, startRouter } from 'mobx-router';
+import views from './router';
 // mobx
 import { Provider } from 'mobx-react';
 import RootStore from './stores';
-const rootStore = new RootStore();
-// mobx-router
-import { MobxRouter, RouterStore, startRouter } from 'mobx-router';
+let rootStore = new RootStore();
+// import CounterStore from './stores/counter';
+// const counter = new CounterStore();
 rootStore = {
     ...rootStore,
     router: new RouterStore()
 };
-// import CounterStore from './stores/counter';
-// const counter = new CounterStore();
+startRouter(views, rootStore);
+console.log('rootStore', rootStore);
 
 function App() {
     return (
-        <Provider rootStore={rootStore}>
+        <Provider store={rootStore}>
             <div className="App">
                 App page
-                <TopLayout></TopLayout>
+                <MobxRouter />
+                {/* <TopLayout></TopLayout> */}
             </div>
         </Provider>
     );
